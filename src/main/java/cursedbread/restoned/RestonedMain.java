@@ -30,7 +30,6 @@ public class RestonedMain implements ModInitializer, GameStartEntrypoint, Client
 
 		RestonedBlocks.blockId = CFG.getInt("IDs.Starting_block_id");
 		RestonedItems.itemId = CFG.getInt("IDs.Starting_item_id");
-
 	}
 
     @Override
@@ -42,21 +41,18 @@ public class RestonedMain implements ModInitializer, GameStartEntrypoint, Client
     }
 
 	@Override
-	public void beforeGameStart() {
+	public void beforeGameStart() {	}
+
+	@Override
+	public void afterGameStart() { }
+
+	@Override
+	public void onInitializeClient() {
+		new RestonedModels();
 		try {
 			TextureRegistry.initializeAllFiles(MOD_ID, TextureRegistry.blockAtlas, true);
 		} catch (URISyntaxException | IOException e) {
 			throw new RuntimeException(e);
 		}
-	}
-
-	@Override
-	public void afterGameStart() {
-
-	}
-
-	@Override
-	public void onInitializeClient() {
-		new RestonedModels();
 	}
 }
